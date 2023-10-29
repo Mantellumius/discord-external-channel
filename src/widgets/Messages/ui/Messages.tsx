@@ -24,12 +24,13 @@ export const Messages: FC<Props> = ({ className }) => {
 				}
 			});
 			dispatch(chatActions.setMessages(response.data.reverse()));
-			ref.current?.scrollTo(0, ref.current.scrollHeight);
+			if (messages.at(-1)?.id !== response.data.at(-1)?.id)
+				ref.current?.scrollTo(0, ref.current.scrollHeight);
 		}, 1000);
 		return () => {
 			clearInterval(interval);
 		};
-	}, [channelId, dispatch, token]);
+	}, [channelId, dispatch, token, messages]);
 	
 	return (
 		<li className={classNames(cls.root, {}, [className])} 

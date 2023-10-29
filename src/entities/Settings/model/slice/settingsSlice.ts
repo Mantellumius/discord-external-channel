@@ -1,13 +1,14 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { SETTINGS } from '@shared/consts/localStorage';
-import { SettingsSchema } from '../types/settingsSchema';
 import { PhysicalSize, appWindow } from '@tauri-apps/api/window';
+import { SettingsSchema } from '../types/settingsSchema';
 
 const initialState: SettingsSchema = {
 	transperancy: 255,
 	backgroundColor: '#000000',
 	height: 600,
 	width: 500,
+	displayAuthorAvatar: true
 };
 
 export const settingsSlice = createSlice({
@@ -20,6 +21,7 @@ export const settingsSlice = createSlice({
 			state.transperancy = settings.transperancy;
 			state.height = settings.height;
 			state.width = settings.width;
+			state.displayAuthorAvatar = settings.displayAuthorAvatar;
 			appWindow.setSize(new PhysicalSize(state.width, state.height));
 		},
 		setSize: (state, action: PayloadAction<{ height: number; width: number; }>) => {
@@ -33,6 +35,11 @@ export const settingsSlice = createSlice({
 		},
 		setColor: (state, action: PayloadAction<string>) => {
 			state.backgroundColor = action.payload;
+			localStorage.setItem(SETTINGS, JSON.stringify(state));
+		},
+		setDisplayAuthorAvatar: (state, action: PayloadAction<boolean>) => {
+			state.displayAuthorAvatar = action.payload;
+			console.log('payload', action.payload);
 			localStorage.setItem(SETTINGS, JSON.stringify(state));
 		}
 	}

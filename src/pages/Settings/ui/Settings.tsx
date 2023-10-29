@@ -22,6 +22,7 @@ export const Settings: FC<Props> = ({ className }) => {
 		setToken(localStorage.getItem(DISCORD_TOKEN) ?? '');
 		setChannelId(localStorage.getItem(CHANNEL_ID) ?? '');
 	}, []);
+	console.log(settings.displayAuthorAvatar);
 	return (
 		<div className={classNames(cls.root, {}, [className])}
 		>
@@ -43,6 +44,8 @@ export const Settings: FC<Props> = ({ className }) => {
 				value={settings.backgroundColor}
 				onChange={value => dispatch(settingsActions.setColor(value))}
 			/>
+			<input type='checkbox' checked={settings.displayAuthorAvatar} 
+				onChange={e => dispatch(settingsActions.setDisplayAuthorAvatar(e.target.checked))}/>
 		</div>
 	);
 };

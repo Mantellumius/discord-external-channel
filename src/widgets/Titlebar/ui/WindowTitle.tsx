@@ -20,9 +20,6 @@ export const WindowTitle: FC = () => {
 			}
 		}).then(res => setChannel(res.data));
 	}, [channelId, dispatch, token]);
-	useEffect(() => {
-
-	},[channelId]);
 
 	return (
 		<div className={cls.root__logo}>
