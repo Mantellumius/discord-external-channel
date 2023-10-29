@@ -44,6 +44,9 @@ export const Settings: FC<Props> = ({ className }) => {
 				value={settings.backgroundColor}
 				onChange={value => dispatch(settingsActions.setColor(value))}
 			/>
+			<span>
+				Show Avatars
+			</span>
 			<input type='checkbox' checked={settings.displayAuthorAvatar} 
 				onChange={e => dispatch(settingsActions.setDisplayAuthorAvatar(e.target.checked))}/>
 		</div>

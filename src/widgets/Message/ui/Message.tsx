@@ -7,18 +7,20 @@ import { MessageContent } from './MessageContent';
 import { useSelector } from 'react-redux';
 import { selectSettings } from '@entities/Settings';
 
-export const Message: FC<Props> = ({ className, message }) => {
+const avatarSize = 48;
+export const Message: FC<Props> = ({ className, message, compact = false }) => {
 	const settings = useSelector(selectSettings);
 	return (
 		<div className={classNames(cls.root, {}, [className])}>
-			{settings.displayAuthorAvatar && <Image variant='rounded'
-				width={48}
-				height={48}
+			{settings.displayAuthorAvatar && !compact && <Image variant='rounded'
+				className={cls.root__avatar}
+				width={avatarSize}
+				height={avatarSize}
 				src={`https://cdn.discordapp.com/avatars/${message.author.id}/${message.author.avatar}.png`}
 			/>}
-			<div className={cls.root__text}>
-				<span className={cls.root__text__name}>{message.author.global_name}</span>
-				<MessageContent 
+			<div className={cls.root__text} style={{paddingLeft: compact ? avatarSize + 16 : 0}}>
+				{!compact && <span className={cls.root__text__name}>{message.author.global_name}</span>}
+				<MessageContent
 					content={message.content} 
 					attachments={message.attachments}
 					embeds={message.embeds}
@@ -30,5 +32,6 @@ export const Message: FC<Props> = ({ className, message }) => {
 
 interface Props {
 	className?: string,
-	message: MessageType
+	message: MessageType,
+	compact?: boolean
 }

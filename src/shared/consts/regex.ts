@@ -1,1 +1,0 @@
-export const EMOJI_REGEXP = /<:.{1,32}:\d{18}>/gi;

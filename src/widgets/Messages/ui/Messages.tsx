@@ -18,7 +18,7 @@ export const Messages: FC<Props> = ({ className }) => {
 	useEffect(() => {
 		const interval = setInterval(async () => {
 			if (!token || !channelId) return;
-			const response = await axios.get<MessageType[]>(`${DISCORD_API}/channels/${channelId}/messages?limit=10`, {
+			const response = await axios.get<MessageType[]>(`${DISCORD_API}/channels/${channelId}/messages?limit=20`, {
 				headers: {
 					'Authorization': token
 				}
@@ -36,8 +36,11 @@ export const Messages: FC<Props> = ({ className }) => {
 		<li className={classNames(cls.root, {}, [className])} 
 			ref={ref}
 		>
-			{messages.map(message => (
-				<Message key={message.id} message={message} />
+			{messages.map((message, i) => (
+				<Message key={message.id} 
+					message={message} 
+					compact={messages[i - 1]?.author.id === message.author.id}
+				/>
 			))}
 		</li>
 	);
