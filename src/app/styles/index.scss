@@ -1,0 +1,8 @@
+@import './reset';
+@import './variables/globals';
+
+body {
+	overflow: hidden;
+	height: 100vh;
+	font: var(--font-m);
+}

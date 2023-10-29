@@ -1,0 +1,23 @@
+.root {
+	display: flex;
+	align-items: center;
+	padding: 4px;
+	border: none;
+	border-radius: 8px;
+	background: var(--bg-color);
+	cursor: pointer;
+	transition: transform .1s ease-in;
+	
+	&:focus {
+		outline: none;
+	}
+
+	&:disabled {
+		opacity: .8;
+		cursor: initial;
+	}
+
+	&:hover {
+		background: var(--neutral-600);
+	}
+}

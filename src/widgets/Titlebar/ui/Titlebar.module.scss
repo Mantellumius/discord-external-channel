@@ -1,0 +1,47 @@
+.root {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	overflow: hidden;
+	width: 100%;
+	height: var(--titlebar-height);
+	border-radius: 4px 4px 0 0;
+	background: var(--bg-color);
+	transition: height 0.3s ease;
+}
+
+.root_hide {
+	height: 0;
+}
+
+.root__logo {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+	height: 100%;
+	padding-left: 8px;
+}
+
+.root__button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 40px;
+	height: var(--titlebar-height);
+	border-radius: 0;
+	transition: all 0.3s ease;
+}
+
+.root__buttons {
+	display: flex;
+	align-self: flex-end;
+}
+
+.root__close {
+	&:hover {
+		background: var(--danger-700);
+	}
+} 

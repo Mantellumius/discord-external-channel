@@ -1,0 +1,16 @@
+.root {
+	display: flex;
+	gap: 16px;
+}
+
+.root__text {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.root__text__name {
+	font-weight: 600;
+}

@@ -1,0 +1,36 @@
+.root {
+	--step-size: 5%;
+	--range-color: #fff6;
+	--separator-color: #000;
+
+	overflow: hidden;
+	width: 20rem;
+	height: 2rem;
+	padding: 0;
+	border-radius: 1rem;
+	background-color: var(--range-color);
+	cursor: col-resize;
+	appearance: none;
+  
+	&[step]{
+		background-color: transparent;
+		background-image: repeating-linear-gradient(
+			to right, 
+			var(--range-color), 
+			var(--range-color) calc(var(--step-size) - 1px),
+			var(--separator-color) var(--step-size)
+		);
+	}
+
+	&::-webkit-slider-thumb {
+		appearance: none;
+		width: 0;
+		box-shadow: -20rem 0 0 20rem var(--range-color);
+	}
+
+	&::-moz-range-thumb {
+		width: 0;
+		border: none;
+		box-shadow: -20rem 0 0 20rem var(--range-color);
+	}
+}
