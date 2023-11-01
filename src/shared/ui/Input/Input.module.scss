@@ -5,9 +5,14 @@
 	flex-direction: column;
 	width: 100%;
 	padding: 4px;
-	border: none;
+	border: 2px solid rgb(255 255 255 / 23%);
 	border-radius: 4px;
 	background-color: transparent;
+	transition: border 0.3s ease;
+
+	&:focus {
+		border: 2px solid rgb(144 202 249);
+	}
 
 	&:not([type='checkbox']):focus {
 		outline: none;

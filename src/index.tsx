@@ -1,5 +1,5 @@
 import { StoreProvider } from '@app/providers/StoreProvider';
-import { Chat } from '@pages/Chat';
+import { Channel } from '@pages/Channel';
 import { Settings } from '@pages/Settings';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -12,8 +12,8 @@ const router = createBrowserRouter([
 		element: <Layout />,
 		children:[
 			{
-				path: '/chat',
-				element: <Chat />
+				path: '/channel',
+				element: <Channel />
 			},
 			{
 				path: '/settings',

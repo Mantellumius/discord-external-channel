@@ -7,7 +7,7 @@
     "withGlobalTauri": false
   },
   "package": {
-    "productName": "discord-external-chat",
+    "productName": "discord-external-channel",
     "version": "0.0.0"
   },
   "tauri": {
@@ -31,7 +31,7 @@
     "bundle": {
       "active": true,
       "targets": "all",
-      "identifier": "discord-external-chat",
+      "identifier": "discord-external-channel",
       "icon": [
         "icons/icon.png",
         "icons/icon.ico"
@@ -44,12 +44,12 @@
       {
         "fullscreen": false,
         "resizable": true,
-        "title": "discord-external-chat",
-        "width": 500,
-        "height": 700,
+        "title": "discord-external-channel",
+        "width": 600,
+        "height": 400,
         "transparent": true,
         "decorations": false,
-        "url": "/chat"
+        "url": "/channel"
       }
     ]
   }

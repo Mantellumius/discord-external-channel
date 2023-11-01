@@ -1,4 +1,4 @@
-import { Message as MessageType } from '@entities/Chat/model/types/Message';
+import { APIMessage } from 'discord-api-types/v10';
 import classNames from '@shared/lib/classNames/classNames';
 import { Image } from '@shared/ui/Image/Image';
 import { FC } from 'react';
@@ -32,6 +32,6 @@ export const Message: FC<Props> = ({ className, message, compact = false }) => {
 
 interface Props {
 	className?: string,
-	message: MessageType,
+	message: APIMessage,
 	compact?: boolean
 }

@@ -3,9 +3,9 @@ import classNames from '@shared/lib/classNames/classNames';
 import { Messages } from '@widgets/Messages';
 import { CSSProperties, FC } from 'react';
 import { useSelector } from 'react-redux';
-import cls from './Chat.module.scss';
+import cls from './Channel.module.scss';
 
-export const Chat: FC<Props> = ({ className }) => {
+export const Channel: FC<Props> = ({ className }) => {
 	const settings = useSelector(selectSettings);
 	return (
 		<div className={classNames(cls.root, {}, [className])} 

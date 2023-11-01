@@ -1,4 +1,4 @@
-import { selectChannelId } from '@entities/Chat';
+import { selectChannelId } from '@entities/Channel';
 import { selectToken } from '@entities/User';
 import { DISCORD_API } from '@shared/consts/apis';
 import { Channel } from '@shared/types/Channel';
@@ -23,7 +23,7 @@ export const WindowTitle: FC = () => {
 
 	return (
 		<div className={cls.root__logo}>
-			<span>Chat {channel?.name}</span>
+			<span>Channel - {channel?.name}</span>
 		</div>
 	);
 };

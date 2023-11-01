@@ -1,4 +1,4 @@
-import chatIcon from '@assets/icons/chat.svg';
+import channelIcon from '@assets/icons/channel.svg';
 import closeIcon from '@assets/icons/close.svg';
 import pinIcon from '@assets/icons/pin.svg';
 import pinnedIcon from '@assets/icons/pinned.svg';
@@ -37,8 +37,8 @@ export const Titlebar: FC<Props> = ({ className }) => {
 				<Button className={cls.root__button} onClick={() => navigate('/settings')}>
 					<img width={16} height={16} src={settingsIcon}/>
 				</Button>
-				<Button className={cls.root__button} onClick={() => navigate('chat')}>
-					<img width={16} height={16} src={chatIcon}/>
+				<Button className={cls.root__button} onClick={() => navigate('channel')}>
+					<img width={16} height={16} src={channelIcon}/>
 				</Button>
 				<Button className={classNames(cls.root__button, {}, [cls.root__close])} onClick={handleClose}>
 					<img width={16} height={16} src={closeIcon}/>

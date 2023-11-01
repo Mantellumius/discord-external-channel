@@ -17,7 +17,7 @@
 		background-image: repeating-linear-gradient(
 			to right, 
 			var(--range-color), 
-			var(--range-color) calc(var(--step-size) - 1px),
+			var(--range-color) calc(var(--step-size) - 2px),
 			var(--separator-color) var(--step-size)
 		);
 	}

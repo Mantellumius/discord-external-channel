@@ -1,5 +1,5 @@
 {
-  "name": "discord-external-chat",
+  "name": "discord-external-channel",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -28,6 +28,7 @@
     "@typescript-eslint/eslint-plugin": "^6.9.0",
     "@vitejs/plugin-react": "^4.0.3",
     "cross-env": "^7.0.3",
+    "discord-api-types": "^0.37.62",
     "eslint": "^8.51.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",

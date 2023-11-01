@@ -1,1 +1,1 @@
-# Discord External Chat
+# Discord External Channel

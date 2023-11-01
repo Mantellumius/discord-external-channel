@@ -4,10 +4,12 @@ import { PhysicalSize, appWindow } from '@tauri-apps/api/window';
 import { SettingsSchema } from '../types/settingsSchema';
 
 const initialState: SettingsSchema = {
-	transperancy: 255,
+	transperancy: 100,
 	backgroundColor: '#000000',
 	height: 600,
 	width: 500,
+	messagesAmount: 25,
+	fetchInterval: 1000,
 	displayAuthorAvatar: true
 };
 
@@ -16,12 +18,8 @@ export const settingsSlice = createSlice({
 	initialState,
 	reducers: {
 		init: (state) => {
-			const settings = JSON.parse(localStorage.getItem(SETTINGS) ?? '{}') as SettingsSchema;
-			state.backgroundColor = settings.backgroundColor;
-			state.transperancy = settings.transperancy;
-			state.height = settings.height;
-			state.width = settings.width;
-			state.displayAuthorAvatar = settings.displayAuthorAvatar;
+			const settings = JSON.parse(localStorage.getItem(SETTINGS) ?? '{}');
+			Object.assign(state, settings);
 			appWindow.setSize(new PhysicalSize(state.width, state.height));
 		},
 		setSize: (state, action: PayloadAction<{ height: number; width: number; }>) => {
@@ -39,7 +37,14 @@ export const settingsSlice = createSlice({
 		},
 		setDisplayAuthorAvatar: (state, action: PayloadAction<boolean>) => {
 			state.displayAuthorAvatar = action.payload;
-			console.log('payload', action.payload);
+			localStorage.setItem(SETTINGS, JSON.stringify(state));
+		},
+		setMessagesAmount: (state, action: PayloadAction<number>) => {
+			state.messagesAmount = action.payload;
+			localStorage.setItem(SETTINGS, JSON.stringify(state));
+		},
+		setFetchInterval: (state, action: PayloadAction<number>) => {
+			state.fetchInterval = action.payload;
 			localStorage.setItem(SETTINGS, JSON.stringify(state));
 		}
 	}

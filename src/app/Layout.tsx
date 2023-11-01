@@ -1,4 +1,4 @@
-import { chatActions } from '@entities/Chat';
+import { channelActions } from '@entities/Channel';
 import { selectBackgroundColorWithTransperancy, settingsActions } from '@entities/Settings';
 import { userActions } from '@entities/User';
 import { appWindow } from '@tauri-apps/api/window';
@@ -19,7 +19,7 @@ const Layout = () => {
 		const unlistens: Promise<UnlistenFn>[] = [];
 		(async () => {
 			dispatch(userActions.initAuthData());
-			dispatch(chatActions.initChat());
+			dispatch(channelActions.initChannel());
 			dispatch(settingsActions.init());
 			unlistens.push(appWindow.onResized(e => {
 				dispatch(settingsActions.setSize({

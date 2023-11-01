@@ -1,0 +1,97 @@
+$dark: var(--neutral-900);
+$speed: 0.3s;
+$toggle-indicator-size: 24px; // changing this number will resize the whole toggle
+$track-height: $toggle-indicator-size + 6;
+$track-width: $toggle-indicator-size * 2.5;
+$high-contrast-mode-support: solid 2px transparent;
+$track-background: var(--neutral-300);
+$focus-ring: 0 0 0 2px $dark;
+
+.root {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    border-radius: 100px;
+    font-weight: 700;
+
+    &:last-of-type {
+        margin: 0;
+    }
+}
+
+.root__toggleTrack {
+    position: relative;
+    display: flex;
+    width: $track-width;
+    height: $track-height;
+    border: 1px solid $dark;
+    border-radius: 100px;
+    background: $track-background;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.toggleIndicator {
+    position: absolute;
+    bottom: 2px;
+    left: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: $toggle-indicator-size;
+    height: $toggle-indicator-size;
+    border-radius: $toggle-indicator-size;
+    background: $dark;
+    outline: $high-contrast-mode-support;
+    transition: transform $speed ease;
+}
+
+.checkMark {
+    width: $toggle-indicator-size - 4;
+    height: $toggle-indicator-size - 4;
+    opacity: 0;
+    fill: #fff;
+    transition: opacity $speed ease-in-out;
+}
+
+.root__input {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    white-space: nowrap;
+    clip-path: inset(50%);
+
+    &:disabled + .root__toggleTrack {
+        opacity: 0.7;
+        cursor: not-allowed;
+    }
+
+    &:not([disabled]):focus + .root__toggleTrack {
+        border: 1px solid transparent;
+        box-shadow: $focus-ring;
+    }
+
+    &:not([disabled]):active + .root__toggleTrack {
+        border: 1px solid transparent;
+        box-shadow: $focus-ring;
+    }
+
+    &:checked + .root__toggleTrack .toggleIndicator {
+        background: $dark;
+        transform: translateX($track-width - $track-height);
+
+        .checkMark {
+            opacity: 1;
+            transition: opacity $speed ease-in-out;
+        }
+    }
+
+}
+
+@media screen and (-ms-high-contrast: active) {
+    .root__toggleTrack {
+        border-radius: 0;
+    }
+}

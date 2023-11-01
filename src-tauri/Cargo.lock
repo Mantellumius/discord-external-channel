@@ -565,7 +565,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "discord-external-chat"
+name = "discord-external-channel"
 version = "0.0.0"
 dependencies = [
  "serde",
