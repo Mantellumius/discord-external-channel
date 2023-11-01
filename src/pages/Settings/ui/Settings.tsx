@@ -2,11 +2,10 @@ import { channelActions, selectChannelId } from '@entities/Channel';
 import { selectSettings, settingsActions } from '@entities/Settings';
 import { selectToken, userActions } from '@entities/User';
 import classNames from '@shared/lib/classNames/classNames';
-import { ColorPicker, FormInput, WithLabel } from '@shared/ui';
+import { Checkbox, ColorPicker, FormInput, WithLabel } from '@shared/ui';
 import { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import cls from './Settings.module.scss';
-import Checkbox from '@shared/ui/Checkbox/Checkbox';
 
 export const Settings: FC<Props> = ({ className }) => {
 	const channelId = useSelector(selectChannelId);
@@ -16,6 +15,9 @@ export const Settings: FC<Props> = ({ className }) => {
 
 	return (
 		<div className={classNames(cls.root, {}, [className])}>
+			<h2 className={cls.root__header}>
+				General
+			</h2>
 			<WithLabel label='Token'>
 				<FormInput value={token}
 					type='password'
@@ -28,16 +30,19 @@ export const Settings: FC<Props> = ({ className }) => {
 					onChange={(value) => dispatch(channelActions.setChannelId(value))} 
 					placeholder='Channel id'/>
 			</WithLabel>
-			<WithLabel label='Messages amount'>
+			<WithLabel label='Amount of messages'>
 				<FormInput type='number' value={settings.messagesAmount}
 					onChange={value => dispatch(settingsActions.setMessagesAmount(Number(value)))}
 				/>
 			</WithLabel>
-			<WithLabel label='Fetch messages interval in ms'>
+			<WithLabel label='Fetch interval in ms'>
 				<FormInput type='number' value={settings.fetchInterval}
 					onChange={value => dispatch(settingsActions.setFetchInterval(Number(value)))}
 				/>
 			</WithLabel>
+			<h2 className={cls.root__header}>
+				Appearence
+			</h2>
 			<WithLabel label='Background transperancy'>
 				<FormInput type='number'
 					value={settings.transperancy.toString()}

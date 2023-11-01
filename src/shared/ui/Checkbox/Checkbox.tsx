@@ -27,4 +27,4 @@ type Props = {
 	name?: string;
 	onChange: (e: boolean) => void;
 }
-export default Checkbox;
+export { Checkbox };

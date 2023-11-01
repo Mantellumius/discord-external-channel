@@ -1,4 +1,5 @@
 export { Button } from './Button/Button';
+export { Checkbox } from './Checkbox/Checkbox';
 export { ColorPicker } from './ColorPicker/ColorPicker';
 export { Emoji } from './Emoji/Emoji';
 export { FormInput } from './FormInput/FormInput';

@@ -14,7 +14,7 @@ const Layout = () => {
 	const [isFocused, setIsFocused] = useState(true);
 	const backgroundColor = useSelector(selectBackgroundColorWithTransperancy);
 	const dispatch = useDispatch();
-
+	
 	useEffect(() => {
 		const unlistens: Promise<UnlistenFn>[] = [];
 		(async () => {
@@ -40,7 +40,7 @@ const Layout = () => {
 	return (
 		<div className={cls.root}
 			style={{'--background-color': backgroundColor, 
-				'--titlebar-height': isFocused ? '24px' : 0} as CSSProperties}
+				'--titlebar-height': (!isFocused && window.location.pathname !== '/settings') ? 0 : '24px'} as CSSProperties}
 		>
 			<Titlebar />
 			<Outlet />

@@ -24,6 +24,7 @@ export const Titlebar: FC<Props> = ({ className }) => {
 			return !prev;
 		});
 	};
+	
 	return (
 		<div data-tauri-drag-region className={classNames(cls.root, {}, [className])}>
 			<WindowTitle />
