@@ -6,13 +6,12 @@ import { Emoji } from '@shared/ui/Emoji/Emoji';
 import { Image } from '@shared/ui/Image/Image';
 import { APIAttachment, APIEmbed, EmbedType } from 'discord-api-types/v10';
 import { FC, Fragment } from 'react';
-import cls from './Message.module.scss';
 
 export const MessageContent: FC<Props> = ({ className, content, attachments, embeds }) => {
 	const parsedContent = parseString(content);
 
 	return (
-		<div className={classNames(cls.root__text__content, {}, [className])}>
+		<div className={classNames('', {}, [className])}>
 			{parsedContent.map((c, i) => {
 				return <Fragment key={i}>
 					{EMOJI_REGEXP.test(c) ? 

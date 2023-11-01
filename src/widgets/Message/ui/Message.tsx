@@ -1,17 +1,20 @@
-import { APIMessage } from 'discord-api-types/v10';
+import { selectSettings } from '@entities/Settings';
 import classNames from '@shared/lib/classNames/classNames';
 import { Image } from '@shared/ui/Image/Image';
-import { FC } from 'react';
-import cls from './Message.module.scss';
-import { MessageContent } from './MessageContent';
+import { APIMessage } from 'discord-api-types/v10';
+import { CSSProperties, FC } from 'react';
 import { useSelector } from 'react-redux';
-import { selectSettings } from '@entities/Settings';
+import cls from './Message.module.scss';
+import { MessageContent } from './MessageContent/MessageContent';
 
 const avatarSize = 48;
 export const Message: FC<Props> = ({ className, message, compact = false }) => {
 	const settings = useSelector(selectSettings);
+
 	return (
-		<div className={classNames(cls.root, {}, [className])}>
+		<div className={classNames(cls.root, {}, [className])}
+			style={{'--text-color': settings.textColor} as CSSProperties}
+		>
 			{settings.displayAuthorAvatar && !compact && <Image variant='rounded'
 				className={cls.root__avatar}
 				width={avatarSize}

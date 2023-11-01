@@ -2,10 +2,11 @@ import { channelActions, selectChannelId } from '@entities/Channel';
 import { selectSettings, settingsActions } from '@entities/Settings';
 import { selectToken, userActions } from '@entities/User';
 import classNames from '@shared/lib/classNames/classNames';
-import { Checkbox, ColorPicker, FormInput, WithLabel } from '@shared/ui';
+import { Checkbox, ColorPicker, FormInput, Range, WithLabel } from '@shared/ui';
 import { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import cls from './Settings.module.scss';
+import { H } from '@shared/ui/H/H';
 
 export const Settings: FC<Props> = ({ className }) => {
 	const channelId = useSelector(selectChannelId);
@@ -15,9 +16,9 @@ export const Settings: FC<Props> = ({ className }) => {
 
 	return (
 		<div className={classNames(cls.root, {}, [className])}>
-			<h2 className={cls.root__header}>
+			<H size={2} variant='primary' className={cls.root__header}>
 				General
-			</h2>
+			</H>
 			<WithLabel label='Token'>
 				<FormInput value={token}
 					type='password'
@@ -40,19 +41,22 @@ export const Settings: FC<Props> = ({ className }) => {
 					onChange={value => dispatch(settingsActions.setFetchInterval(Number(value)))}
 				/>
 			</WithLabel>
-			<h2 className={cls.root__header}>
+			<H size={2} variant='primary' className={cls.root__header}>
 				Appearence
-			</h2>
-			<WithLabel label='Background transperancy'>
-				<FormInput type='number'
-					value={settings.transperancy.toString()}
-					onChange={value => dispatch(settingsActions.setTransperancy(Number(value)))} 
-					min={0} max={100} step={1}/>
-			</WithLabel>
+			</H>
 			<WithLabel label='Background color'>
 				<ColorPicker 
 					value={settings.backgroundColor}
-					onChange={value => dispatch(settingsActions.setColor(value))}
+					onChange={value => dispatch(settingsActions.setBackgroundColor(value))}
+				/>
+				<Range value={settings.transperancy}
+					onChange={value => dispatch(settingsActions.setTransperancy(Number(value)))} 
+					min={0} max={100}/>
+			</WithLabel>
+			<WithLabel label='Text color'>
+				<ColorPicker 
+					value={settings.textColor}
+					onChange={value => dispatch(settingsActions.setTextColor(value))}
 				/>
 			</WithLabel>
 			<WithLabel label='Show avatar'>

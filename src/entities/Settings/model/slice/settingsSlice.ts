@@ -6,6 +6,7 @@ import { SettingsSchema } from '../types/settingsSchema';
 const initialState: SettingsSchema = {
 	transperancy: 100,
 	backgroundColor: '#000000',
+	textColor: '#ffffff',
 	height: 600,
 	width: 500,
 	messagesAmount: 25,
@@ -31,8 +32,12 @@ export const settingsSlice = createSlice({
 			state.transperancy = action.payload;
 			localStorage.setItem(SETTINGS, JSON.stringify(state));
 		},
-		setColor: (state, action: PayloadAction<string>) => {
+		setBackgroundColor: (state, action: PayloadAction<string>) => {
 			state.backgroundColor = action.payload;
+			localStorage.setItem(SETTINGS, JSON.stringify(state));
+		},
+		setTextColor: (state, action: PayloadAction<string>) => {
+			state.textColor = action.payload;
 			localStorage.setItem(SETTINGS, JSON.stringify(state));
 		},
 		setDisplayAuthorAvatar: (state, action: PayloadAction<boolean>) => {
