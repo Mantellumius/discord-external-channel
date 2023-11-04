@@ -1,4 +1,5 @@
 import { selectSettings } from '@entities/Settings';
+import { selectTextColorWithTransperancy } from '@entities/Settings/model/selectors/selectTextColorWithTransperancy';
 import classNames from '@shared/lib/classNames/classNames';
 import { Image } from '@shared/ui/Image/Image';
 import { APIMessage } from 'discord-api-types/v10';
@@ -10,10 +11,11 @@ import { MessageContent } from './MessageContent/MessageContent';
 const avatarSize = 48;
 export const Message: FC<Props> = ({ className, message, compact = false }) => {
 	const settings = useSelector(selectSettings);
-
+	const textColor = useSelector(selectTextColorWithTransperancy);
+	
 	return (
 		<div className={classNames(cls.root, {}, [className])}
-			style={{'--text-color': settings.textColor} as CSSProperties}
+			style={{'--text-color': textColor} as CSSProperties}
 		>
 			{settings.displayAuthorAvatar && !compact && <Image variant='rounded'
 				className={cls.root__avatar}

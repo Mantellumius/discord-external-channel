@@ -5,8 +5,12 @@ const FormInput: React.FC<Props> = ({ label, error, width, className, onChange, 
 	return (
 		<div className={cls.root} style={{ width: width }}>
 			<fieldset className={cls.root__fieldset}>
-				<input value={value} onChange={(e) => onChange(e.target.value)} 
-					className={classNames(cls.root__fieldset__input,{[cls.errorInput]: !!error}, [className])} required autoComplete={label} {...props} />
+				<input value={value} 
+					onChange={(e) => onChange(e.target.value)} 
+					autoComplete={label} 
+					className={classNames(cls.root__fieldset__input,{[cls.errorInput]: !!error}, [className])} 
+					{...props} 
+				/>
 				<label className={cls.root__fieldset__label}>{label}</label>
 			</fieldset>
 			{error && <div className={cls.root__error}>{error}</div>}

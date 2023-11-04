@@ -9,7 +9,9 @@
     "build": "tauri build",
     "build:ui": "vite build",
     "tauri": "tauri",
-    "test:unit": "node --loader tsx --watch"
+    "test:unit": "node --loader tsx --watch",
+    "lint:ts": "eslint ./src",
+    "lint:scss": "stylelint \"**/*.scss\""
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.0",
@@ -38,6 +40,7 @@
     "stylelint-order": "^6.0.3",
     "tsx": "^3.14.0",
     "typescript": "^5.0.2",
-    "vite": "^4.4.4"
+    "vite": "^4.4.4",
+    "vite-plugin-svgr": "^4.1.0"
   }
 }

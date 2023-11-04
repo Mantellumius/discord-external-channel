@@ -2,11 +2,10 @@ import { channelActions, selectChannelId } from '@entities/Channel';
 import { selectSettings, settingsActions } from '@entities/Settings';
 import { selectToken, userActions } from '@entities/User';
 import classNames from '@shared/lib/classNames/classNames';
-import { Checkbox, ColorPicker, FormInput, Range, WithLabel } from '@shared/ui';
+import { Checkbox, ColorPicker, FormInput, H, Range, WithLabel } from '@shared/ui';
 import { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import cls from './Settings.module.scss';
-import { H } from '@shared/ui/H/H';
 
 export const Settings: FC<Props> = ({ className }) => {
 	const channelId = useSelector(selectChannelId);
@@ -39,6 +38,7 @@ export const Settings: FC<Props> = ({ className }) => {
 			<WithLabel label='Fetch interval in ms'>
 				<FormInput type='number' value={settings.fetchInterval}
 					onChange={value => dispatch(settingsActions.setFetchInterval(Number(value)))}
+					min={100}
 				/>
 			</WithLabel>
 			<H size={2} variant='primary' className={cls.root__header}>
@@ -49,14 +49,18 @@ export const Settings: FC<Props> = ({ className }) => {
 					value={settings.backgroundColor}
 					onChange={value => dispatch(settingsActions.setBackgroundColor(value))}
 				/>
-				<Range value={settings.transperancy}
-					onChange={value => dispatch(settingsActions.setTransperancy(Number(value)))} 
+				<Range value={settings.backgroundTransperancy}
+					onChange={value => dispatch(settingsActions.setBackgroundTransperancy(Number(value)))} 
 					min={0} max={100}/>
 			</WithLabel>
 			<WithLabel label='Text color'>
 				<ColorPicker 
 					value={settings.textColor}
 					onChange={value => dispatch(settingsActions.setTextColor(value))}
+				/>
+				<Range value={settings.textColorTransperancy}
+					onChange={value => dispatch(settingsActions.setTextColorTransperancy(Number(value)))} 
+					min={0} max={100}
 				/>
 			</WithLabel>
 			<WithLabel label='Show avatar'>

@@ -1,7 +1,7 @@
 .root {
 	--step-size: 5%;
 	--range-color: #fff6;
-	--separator-color: #000;
+	--separator-color: black;
 
 	flex: 1;
 	overflow: hidden;
@@ -25,12 +25,6 @@
 	&::-webkit-slider-thumb {
 		appearance: none;
 		width: 0;
-		box-shadow: -20rem 0 0 20rem var(--range-color);
-	}
-
-	&::-moz-range-thumb {
-		width: 0;
-		border: none;
 		box-shadow: -20rem 0 0 20rem var(--range-color);
 	}
 }

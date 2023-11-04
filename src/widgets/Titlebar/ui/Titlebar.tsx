@@ -1,8 +1,9 @@
-import channelIcon from '@assets/icons/channel.svg';
-import closeIcon from '@assets/icons/close.svg';
-import pinIcon from '@assets/icons/pin.svg';
-import pinnedIcon from '@assets/icons/pinned.svg';
-import settingsIcon from '@assets/icons/settings.svg';
+/// <reference types="vite-plugin-svgr/client" />
+import ChannelIcon from '@assets/icons/channel.svg?react';
+import CloseIcon from '@assets/icons/close.svg?react';
+import PinIcon from '@assets/icons/pin.svg?react';
+import PinnedIcon from '@assets/icons/pinned.svg?react';
+import SettingsIcon from '@assets/icons/settings.svg?react';
 import classNames from '@shared/lib/classNames/classNames';
 import { Button } from '@shared/ui';
 import { appWindow } from '@tauri-apps/api/window';
@@ -31,18 +32,18 @@ export const Titlebar: FC<Props> = ({ className }) => {
 			<div className={cls.root__buttons}>
 				<Button className={cls.root__button} onClick={pin}>
 					{alwaysOnTop ? 
-						<img width={16} height={16} src={pinnedIcon}/> :
-						<img width={16} height={16} src={pinIcon}/>  
+						<PinnedIcon width={16} height={16} /> :
+						<PinIcon width={16} height={16}/>  
 					}
 				</Button>
 				<Button className={cls.root__button} onClick={() => navigate('/settings')}>
-					<img width={16} height={16} src={settingsIcon}/>
+					<SettingsIcon width={16} height={16} />
 				</Button>
 				<Button className={cls.root__button} onClick={() => navigate('channel')}>
-					<img width={16} height={16} src={channelIcon}/>
+					<ChannelIcon width={16} height={16} />
 				</Button>
 				<Button className={classNames(cls.root__button, {}, [cls.root__close])} onClick={handleClose}>
-					<img width={16} height={16} src={closeIcon}/>
+					<CloseIcon width={16} height={16} />
 				</Button>
 			</div>
 		</div>

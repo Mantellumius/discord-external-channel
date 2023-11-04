@@ -6,7 +6,7 @@ import { ChannelSchema } from '../types/channelSchema';
 
 const initialState: ChannelSchema = {
 	messages: [],
-	channelId: '',
+	channelId: localStorage.getItem(CHANNEL_ID) ?? '',
 };
 
 export const channelSlice = createSlice({
@@ -23,14 +23,18 @@ export const channelSlice = createSlice({
 			state.messages = action.payload;
 		},
 		setChannelId(state, action: PayloadAction<string>) {
-			localStorage.setItem(CHANNEL_ID, action.payload);
 			state.channelId = action.payload;
 			state.messages = [];
 		},
-		initChannel(state) {
-			state.channelId = localStorage.getItem(CHANNEL_ID) || '';
-		},
 	},
+	extraReducers: builder => {
+		return builder.addMatcher(
+			(action: PayloadAction<unknown>) => action.type.startsWith('messages/setChannelId'),
+			(state: ChannelSchema) => {
+				localStorage.setItem(CHANNEL_ID, state.channelId);
+			}
+		);
+	}
 });
 
 export const { actions, reducer } = channelSlice;

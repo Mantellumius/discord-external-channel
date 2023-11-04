@@ -1,11 +1,15 @@
 import react from "@vitejs/plugin-react";
 import path from "node:path";
 import { defineConfig } from "vite";
+import svgr from 'vite-plugin-svgr';
 
 const generateScopedNameDev = (name, filename) => `${filename.split('/').at(-1).split('.')[0]}-${name}`;
 
 export default defineConfig(async ({ mode }) => ({
-  plugins: [react()],
+  plugins: [
+    react(),
+    svgr()
+  ],
   resolve: {
     alias: {
       "@app": path.resolve(__dirname, "./src/app"),

@@ -11,19 +11,20 @@ export const WindowTitle: FC = () => {
 	const dispatch = useDispatch();
 	const channelId = useSelector(selectChannelId);
 	const token = useSelector(selectToken);
-	const [channel, setChannel] = useState<Channel>();
+	const [channelName, setChannelName] = useState('');
 	useEffect(() => {
 		if (!token || !channelId) return;
 		axios.get<Channel>(`${DISCORD_API}/channels/${channelId}`, {
 			headers: {
 				'Authorization': token
-			}
-		}).then(res => setChannel(res.data));
+			}})
+			.then(res => setChannelName(res.data.name))
+			.catch(() => setChannelName(''));
 	}, [channelId, dispatch, token]);
 
 	return (
 		<div className={cls.root__logo}>
-			<span>Channel - {channel?.name}</span>
+			<span>Channel - {channelName}</span>
 		</div>
 	);
 };

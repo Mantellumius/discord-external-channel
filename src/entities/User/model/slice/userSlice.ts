@@ -3,7 +3,7 @@ import { DISCORD_TOKEN } from '@shared/consts/localStorage';
 import { UserSchema } from '../types/userSchema';
 
 const initialState: UserSchema = {
-	token: '',
+	token: localStorage.getItem(DISCORD_TOKEN) ?? '',
 };
 
 export const userSlice = createSlice({
@@ -11,16 +11,14 @@ export const userSlice = createSlice({
 	initialState,
 	reducers: {
 		setToken: (state, action: PayloadAction<string>) => {
-			localStorage.setItem(DISCORD_TOKEN, action.payload);
 			state.token = action.payload;
 		},
-		initAuthData: (state) => {
-			const user = localStorage.getItem(DISCORD_TOKEN);
-			if (user) {
-				state.token = user;
-			}
-		},
 	},
+	extraReducers: builder => builder.addMatcher(
+		(action: PayloadAction<unknown>) => action.type.startsWith('messages/setTokeb'),
+		(_, action: PayloadAction<string>) => {
+			localStorage.setItem(DISCORD_TOKEN, action.payload);
+		})
 });
 
 export const { actions, reducer } = userSlice;
