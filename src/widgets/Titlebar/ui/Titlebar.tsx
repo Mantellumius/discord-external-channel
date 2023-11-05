@@ -1,4 +1,3 @@
-/// <reference types="vite-plugin-svgr/client" />
 import ChannelIcon from '@assets/icons/channel.svg?react';
 import CloseIcon from '@assets/icons/close.svg?react';
 import PinIcon from '@assets/icons/pin.svg?react';

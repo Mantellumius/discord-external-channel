@@ -15,7 +15,7 @@ export const userSlice = createSlice({
 		},
 	},
 	extraReducers: builder => builder.addMatcher(
-		(action: PayloadAction<unknown>) => action.type.startsWith('messages/setTokeb'),
+		(action: PayloadAction<unknown>) => action.type.startsWith('messages/setToken'),
 		(_, action: PayloadAction<string>) => {
 			localStorage.setItem(DISCORD_TOKEN, action.payload);
 		})
