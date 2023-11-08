@@ -1,8 +1,8 @@
 export interface SettingsSchema {
-	backgroundTransperancy: number;
+	backgroundOpacity: number;
 	backgroundColor: string;
 	textColor: string;
-	textColorTransperancy: number;
+	textColorOpacity: number;
 	displayAuthorAvatar: boolean;
 	messagesAmount: number;
 	fetchInterval: number;

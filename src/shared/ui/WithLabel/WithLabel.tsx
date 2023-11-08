@@ -8,12 +8,14 @@ export const WithLabel: FC<Props> = ({ className, children, label }) => {
 			<label className={cls.root__label} >
 				{label}
 			</label>
-			{children}
+			<div className={cls.root__input}>
+				{children}
+			</div>
 		</div>
 	);
 };
 
 interface Props extends PropsWithChildren{
 	className?: string,
-	label: string
+	label: string,
 }

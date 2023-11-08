@@ -9,3 +9,11 @@
 .root__label {
 	text-wrap: nowrap;
 }
+
+.root__input {
+	display: flex;
+	gap: 8px;
+	justify-content: flex-end;
+	align-items: center;
+	width: 40%;
+}

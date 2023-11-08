@@ -1,8 +1,7 @@
 import { selectChannelId } from '@entities/Channel';
 import { selectToken } from '@entities/User';
-import { DISCORD_API } from '@shared/consts/apis';
+import { $discordApi } from '@shared/lib/api/discord';
 import { Channel } from '@shared/types/Channel';
-import axios from 'axios';
 import { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import cls from './Titlebar.module.scss';
@@ -14,17 +13,14 @@ export const WindowTitle: FC = () => {
 	const [channelName, setChannelName] = useState('');
 	useEffect(() => {
 		if (!token || !channelId) return;
-		axios.get<Channel>(`${DISCORD_API}/channels/${channelId}`, {
-			headers: {
-				'Authorization': token
-			}})
+		$discordApi.get<Channel>(`/channels/${channelId}`)
 			.then(res => setChannelName(res.data.name))
 			.catch(() => setChannelName(''));
 	}, [channelId, dispatch, token]);
 
 	return (
-		<div className={cls.root__logo}>
-			<span>Channel - {channelName}</span>
+		<div className={cls.root__title}>
+			<span>{channelName}</span>
 		</div>
 	);
 };

@@ -3,6 +3,7 @@ import { selectSettings, settingsActions } from '@entities/Settings';
 import { selectToken, userActions } from '@entities/User';
 import classNames from '@shared/lib/classNames/classNames';
 import { Checkbox, ColorPicker, FormInput, H, Range, WithLabel } from '@shared/ui';
+import { Text } from '@shared/ui/Text/Text';
 import { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import cls from './Settings.module.scss';
@@ -49,7 +50,12 @@ export const Settings: FC<Props> = ({ className }) => {
 					value={settings.backgroundColor}
 					onChange={value => dispatch(settingsActions.setBackgroundColor(value))}
 				/>
-				<Range value={settings.backgroundTransperancy}
+				<Text variant='outline' fontType='monospace'>
+					{settings.backgroundColor}
+				</Text>
+			</WithLabel>
+			<WithLabel label='Background opacity'>
+				<Range value={settings.backgroundOpacity}
 					onChange={value => dispatch(settingsActions.setBackgroundTransperancy(Number(value)))} 
 					min={0} max={100}/>
 			</WithLabel>
@@ -58,7 +64,12 @@ export const Settings: FC<Props> = ({ className }) => {
 					value={settings.textColor}
 					onChange={value => dispatch(settingsActions.setTextColor(value))}
 				/>
-				<Range value={settings.textColorTransperancy}
+				<Text variant='outline' fontType='monospace'>
+					{settings.textColor}
+				</Text>
+			</WithLabel>
+			<WithLabel label='Text opacity'>
+				<Range value={settings.textColorOpacity}
 					onChange={value => dispatch(settingsActions.setTextColorTransperancy(Number(value)))} 
 					min={0} max={100}
 				/>

@@ -24,7 +24,7 @@ export const Message: FC<Props> = ({ className, message, compact = false }) => {
 				src={`https://cdn.discordapp.com/avatars/${message.author.id}/${message.author.avatar}.png`}
 			/>}
 			<div className={cls.root__text} style={{paddingLeft: compact ? avatarSize + 16 : 0}}>
-				{!compact && <span className={cls.root__text__name}>{message.author.global_name}</span>}
+				{!compact && <span className={cls.root__text__name}>{message.author.global_name ?? message.author.username}</span>}
 				<MessageContent
 					content={message.content} 
 					attachments={message.attachments}

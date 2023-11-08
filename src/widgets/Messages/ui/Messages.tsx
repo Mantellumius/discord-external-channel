@@ -1,14 +1,13 @@
 import { channelActions, selectChannelId, selectMessages } from '@entities/Channel';
+import { selectSettings } from '@entities/Settings';
 import { selectToken } from '@entities/User';
-import { DISCORD_API } from '@shared/consts/apis';
+import { $discordApi } from '@shared/lib/api/discord';
 import classNames from '@shared/lib/classNames/classNames';
 import { Message } from '@widgets/Message';
-import axios from 'axios';
 import { APIMessage } from 'discord-api-types/v10';
 import { FC, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import cls from './Messages.module.scss';
-import { selectSettings } from '@entities/Settings';
 
 export const Messages: FC<Props> = ({ className }) => {
 	const dispatch = useDispatch();
@@ -21,11 +20,7 @@ export const Messages: FC<Props> = ({ className }) => {
 	useEffect(() => {
 		const fetchMessages = async () => {
 			if (!token || !channelId) return;
-			const response = await axios.get<APIMessage[]>(`${DISCORD_API}/channels/${channelId}/messages?limit=${settings.messagesAmount}`, {
-				headers: {
-					'Authorization': token
-				}
-			});
+			const response = await $discordApi.get<APIMessage[]>(`/channels/${channelId}/messages?limit=${settings.messagesAmount}`);
 			dispatch(channelActions.setMessages(response.data.reverse()));
 		};
 		fetchMessages();

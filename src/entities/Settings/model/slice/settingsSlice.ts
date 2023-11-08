@@ -3,9 +3,9 @@ import { SETTINGS } from '@shared/consts/localStorage';
 import { SettingsSchema } from '../types/settingsSchema';
 
 const initialState: SettingsSchema = {
-	backgroundTransperancy: 100,
+	backgroundOpacity: 100,
 	backgroundColor: '#000000',
-	textColorTransperancy: 100,
+	textColorOpacity: 100,
 	textColor: '#ffffff',
 	height: 600,
 	width: 500,
@@ -25,7 +25,7 @@ export const settingsSlice = createSlice({
 			state.width = action.payload.width;
 		},
 		setBackgroundTransperancy: (state, action: PayloadAction<number>) => {
-			state.backgroundTransperancy = action.payload;
+			state.backgroundOpacity = action.payload;
 		},
 		setBackgroundColor: (state, action: PayloadAction<string>) => {
 			state.backgroundColor = action.payload;
@@ -34,7 +34,7 @@ export const settingsSlice = createSlice({
 			state.textColor = action.payload;
 		},
 		setTextColorTransperancy: (state, action: PayloadAction<number>) => {
-			state.textColorTransperancy = action.payload;
+			state.textColorOpacity = action.payload;
 		},
 		setDisplayAuthorAvatar: (state, action: PayloadAction<boolean>) => {
 			state.displayAuthorAvatar = action.payload;
