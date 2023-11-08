@@ -1,7 +1,7 @@
-import { EMOJI_REGEXP } from '@shared/consts/regexps';
+import { EMOJI_REGEXP, URL_REGEXP } from '@shared/consts/regexps';
 
 export default function parseString(str: string): string[] {
-	const matches = findEntries(str, new RegExp(EMOJI_REGEXP, 'g'));
+	const matches = findEntries(str, new RegExp(EMOJI_REGEXP + '|' + URL_REGEXP, 'g'));
 	const sliced = sliceStringByIndexes(matches, str);
 	return sliced;
 }

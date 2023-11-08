@@ -1,7 +1,7 @@
 import { selectSettings } from '@entities/Settings';
 import { selectTextColorWithTransperancy } from '@entities/Settings/model/selectors/selectTextColorWithTransperancy';
 import classNames from '@shared/lib/classNames/classNames';
-import { Image } from '@shared/ui/Image/Image';
+import { Image } from '@shared/ui';
 import { APIMessage } from 'discord-api-types/v10';
 import { CSSProperties, FC } from 'react';
 import { useSelector } from 'react-redux';

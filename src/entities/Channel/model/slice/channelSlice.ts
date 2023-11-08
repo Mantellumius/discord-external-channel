@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { CHANNEL_ID } from '@shared/consts/localStorage';
 import replaceAllFrom from '@shared/lib/replaceAllFrom/replaceAllFrom';
-import { APIMessage, EmbedType } from 'discord-api-types/v10';
+import { APIMessage } from 'discord-api-types/v10';
 import { ChannelSchema } from '../types/channelSchema';
 
 const initialState: ChannelSchema = {
@@ -16,7 +16,7 @@ export const channelSlice = createSlice({
 		setMessages(state, action: PayloadAction<APIMessage[]>) {
 			action.payload.forEach(m => {
 				m.content = replaceAllFrom(m.embeds.
-					filter(e => e.type === EmbedType.Image)
+					filter(e => ['video', 'gifv', 'image'].some((type) => e.type === type))
 					.map(e => e.url ?? ''), '', m.content
 				);
 			});

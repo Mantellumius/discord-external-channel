@@ -1,6 +1,6 @@
 import { selectChannelId } from '@entities/Channel';
 import { selectToken } from '@entities/User';
-import { $discordApi } from '@shared/lib/api/discord';
+import { $discord } from '@shared/lib/api/discord';
 import { Channel } from '@shared/types/Channel';
 import { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,7 +13,7 @@ export const WindowTitle: FC = () => {
 	const [channelName, setChannelName] = useState('');
 	useEffect(() => {
 		if (!token || !channelId) return;
-		$discordApi.get<Channel>(`/channels/${channelId}`)
+		$discord.get<Channel>(`/channels/${channelId}`)
 			.then(res => setChannelName(res.data.name))
 			.catch(() => setChannelName(''));
 	}, [channelId, dispatch, token]);

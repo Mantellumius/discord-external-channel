@@ -1,7 +1,7 @@
 import { channelActions, selectChannelId, selectMessages } from '@entities/Channel';
 import { selectSettings } from '@entities/Settings';
 import { selectToken } from '@entities/User';
-import { $discordApi } from '@shared/lib/api/discord';
+import { $discord } from '@shared/lib/api/discord';
 import classNames from '@shared/lib/classNames/classNames';
 import { Message } from '@widgets/Message';
 import { APIMessage } from 'discord-api-types/v10';
@@ -20,7 +20,7 @@ export const Messages: FC<Props> = ({ className }) => {
 	useEffect(() => {
 		const fetchMessages = async () => {
 			if (!token || !channelId) return;
-			const response = await $discordApi.get<APIMessage[]>(`/channels/${channelId}/messages?limit=${settings.messagesAmount}`);
+			const response = await $discord.get<APIMessage[]>(`/channels/${channelId}/messages?limit=${settings.messagesAmount}`);
 			dispatch(channelActions.setMessages(response.data.reverse()));
 		};
 		fetchMessages();

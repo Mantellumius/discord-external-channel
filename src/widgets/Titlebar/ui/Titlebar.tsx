@@ -15,9 +15,6 @@ export const Titlebar: FC<Props> = ({ className }) => {
 	const [alwaysOnTop, setAlwaysOnTop] = useState(false);
 	const navigate = useNavigate();
 	
-	const handleClose = () => {
-		appWindow.close();
-	};
 	const pin = () => {
 		setAlwaysOnTop(prev => {
 			appWindow.setAlwaysOnTop(!prev);
@@ -35,13 +32,16 @@ export const Titlebar: FC<Props> = ({ className }) => {
 						<PinIcon width={16} height={16}/>  
 					}
 				</Button>
-				<Button className={cls.root__button} onClick={() => navigate('/settings')}>
+				<Button className={cls.root__button}
+					onClick={() => navigate('/settings')}>
 					<SettingsIcon width={16} height={16} />
 				</Button>
-				<Button className={cls.root__button} onClick={() => navigate('channel')}>
+				<Button className={cls.root__button}
+					onClick={() => navigate('channel')}>
 					<ChannelIcon width={16} height={16} />
 				</Button>
-				<Button className={classNames(cls.root__button, {}, [cls.root__close])} onClick={handleClose}>
+				<Button className={classNames(cls.root__button, {}, [cls.root__close])}
+					onClick={() => appWindow.close()}>
 					<CloseIcon width={16} height={16} />
 				</Button>
 			</div>

@@ -1,5 +1,5 @@
 import classNames from '@shared/lib/classNames/classNames';
-import { Emoji } from '@shared/ui/Emoji/Emoji';
+import { Emoji } from '@shared/ui';
 import { FC } from 'react';
 
 export const Special: FC<Props> = ({ className, src}) => {
