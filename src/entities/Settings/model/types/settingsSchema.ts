@@ -8,4 +8,5 @@ export interface SettingsSchema {
 	fetchInterval: number;
 	width: number;
 	height: number;
+	minimizeToTray: boolean;
 }

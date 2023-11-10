@@ -23,10 +23,14 @@
         "close": true,
         "hide": true,
         "show": true,
+        "minimize": true,
         "setAlwaysOnTop": true,
         "setSize": true,
         "setResizable": true
       }
+    },
+    "systemTray": {
+      "iconPath": "icons/icon.png"
     },
     "bundle": {
       "active": true,

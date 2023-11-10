@@ -77,6 +77,14 @@ export const Settings: FC<Props> = ({ className }) => {
 				<Checkbox checked={settings.displayAuthorAvatar} 
 					onChange={checked => dispatch(settingsActions.setDisplayAuthorAvatar(checked))}/>
 			</WithLabel>
+			<H size={2} variant='primary' className={cls.root__header}>
+				Other
+			</H>
+			<WithLabel label='Minimize to tray'>
+				<Checkbox checked={settings.minimizeToTray}
+					onChange={checked => dispatch(settingsActions.setMinimizeToTray(checked))} 
+				/>
+			</WithLabel>
 		</div>
 	);
 };

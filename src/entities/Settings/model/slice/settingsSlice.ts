@@ -11,7 +11,8 @@ const initialState: SettingsSchema = {
 	width: 500,
 	messagesAmount: 25,
 	fetchInterval: 1000,
-	displayAuthorAvatar: true
+	displayAuthorAvatar: true,
+	minimizeToTray: false,
 };
 const fromLocalStorage = JSON.parse(localStorage.getItem(SETTINGS) ?? '{}');
 Object.assign(initialState, fromLocalStorage);
@@ -44,6 +45,9 @@ export const settingsSlice = createSlice({
 		},
 		setFetchInterval: (state, action: PayloadAction<number>) => {
 			state.fetchInterval = action.payload;
+		},
+		setMinimizeToTray: (state, action: PayloadAction<boolean>) => {
+			state.minimizeToTray = action.payload;
 		}
 	},
 	extraReducers: builder => {
