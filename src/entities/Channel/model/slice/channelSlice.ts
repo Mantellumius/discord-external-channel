@@ -16,7 +16,7 @@ export const channelSlice = createSlice({
 		setMessages(state, action: PayloadAction<APIMessage[]>) {
 			action.payload.forEach(m => {
 				m.content = replaceAllFrom(m.embeds.
-					filter(e => ['video', 'gifv', 'image'].some((type) => e.type === type))
+					filter(e => ['gifv', 'image'].some((type) => e.type === type))
 					.map(e => e.url ?? ''), '', m.content
 				);
 			});

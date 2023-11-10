@@ -17,6 +17,7 @@ export const Messages: FC<Props> = ({ className }) => {
 	const token = useSelector(selectToken);
 	const listRef = useRef<HTMLLIElement | null>(null);
 	const messagesRef = useRef<APIMessage[]>([]);
+	
 	useEffect(() => {
 		const fetchMessages = async () => {
 			if (!token || !channelId) return;

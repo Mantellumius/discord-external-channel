@@ -25,7 +25,7 @@ export const MessageContent: FC<Props> = ({ className, content, attachments, emb
 				<Image width={'auto'} height={'auto'} key={a.id} src={a.url}/>
 			))}
 			{embeds
-				?.filter(e => ['video', 'gifv', 'image'].some((type) => e.type === type))
+				?.filter(e => ['gifv', 'image'].some((type) => e.type === type))
 				.map(e => (
 					<Image width={'auto'} height={'auto'} key={e.url} src={(e.type === 'gifv' ? e.url + '.gif' : e.url) ?? ''}/>
 				))}
